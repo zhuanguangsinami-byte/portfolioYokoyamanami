@@ -1,383 +1,387 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YOKOYAMA NAMI - Portfolio</title>
-  <style>
-    /* 全体設定 */
-    body {
-      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      color: #333;
-      background-color: #fff;
-      margin: 0;
-      padding: 40px 20px;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOKOYAMA NAMI - Portfolio</title>
+    <style>
+        /* 基本スタイル設定 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            margin: 40px 0 20px;
+            letter-spacing: 2px;
+        }
+        .card {
+            background: #fff;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        /* 1. プロフィール・ヘッダー */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-header h1 {
+            font-size: 32px;
+            letter-spacing: 4px;
+            font-weight: normal;
+        }
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .profile-img-wrapper {
+            text-align: center;
+        }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-list {
+            list-style: none;
+        }
+        .profile-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+        .profile-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
 
-    /* ヘッダー・プロフィール */
-    .header-section {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 40px;
-      gap: 20px;
-    }
+        /* 2. スキルセクション */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .skill-card {
+            background: #eef0f2;
+            padding: 20px;
+            border-radius: 6px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+        .skill-info h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .skill-info p {
+            font-size: 13px;
+            color: #555;
+        }
 
-    .header-title {
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-      color: #444;
-    }
+        /* 3. 電子書籍サイト更新 */
+        .work-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .banner-img, .site-img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .text-block h4 {
+            font-size: 15px;
+            margin: 10px 0 5px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 3px;
+        }
+        .text-block ul {
+            list-style: none;
+            font-size: 13px;
+            color: #444;
+        }
+        .text-block li {
+            margin-bottom: 6px;
+        }
 
-    .motto-list {
-      list-style-type: disc;
-      padding-left: 20px;
-      margin: 0;
-      font-size: 14px;
-      font-weight: bold;
-      color: #555;
-    }
+        /* 4. YOSAKOIソーラン */
+        .yosakoi-grid {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .yosakoi-img-group {
+            width: 200px;
+            text-align: center;
+        }
+        .yosakoi-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .yosakoi-videos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .video-thumb {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 6px;
+            transition: transform 0.2s;
+        }
+        .video-thumb:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
 
-    .motto-list li {
-      margin-bottom: 6px;
-    }
+        /* 5. ハンドメイド & DIY */
+        .handmade-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+        .handmade-img-group {
+            display: flex;
+            gap: 10px;
+        }
+        .handmade-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .diy-img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+        }
 
-    .profile-images {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .profile-img-1 {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .profile-img-2 {
-      width: 160px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* セクション共通 */
-    .section-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #333;
-      letter-spacing: 1px;
-    }
-
-    .bg-box {
-      background-color: #ededed;
-      padding: 30px;
-      border-radius: 4px;
-      margin-bottom: 40px;
-    }
-
-    /* スキル */
-    .skill-container {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .skill-left {
-      flex: 1;
-    }
-
-    .skill-left p {
-      margin: 0 0 10px 0;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .skill-right {
-      width: 220px;
-    }
-
-    .skill-list {
-      list-style-type: disc;
-      padding-left: 20px;
-      margin: 0;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    .skill-list li {
-      margin-bottom: 6px;
-    }
-
-    /* 作成 セクション */
-    .section-main-title {
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-    }
-
-    .sub-section-title {
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 25px;
-      letter-spacing: 1px;
-    }
-
-    /* YOSAKOIソーラン */
-    .yosakoi-intro {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 30px;
-    }
-
-    .yosakoi-img-box {
-      width: 180px;
-      text-align: center;
-    }
-
-    .yosakoi-img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .yosakoi-text {
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .yosakoi-text p {
-      margin: 0 0 15px 0;
-    }
-
-    .video-grid {
-      display: flex;
-      justify-content: space-around;
-      gap: 20px;
-    }
-
-    .video-item {
-      flex: 1;
-      max-width: 300px;
-      text-align: left;
-    }
-
-    .video-label {
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .thumbnail-link {
-      display: block;
-      position: relative;
-      width: 100%;
-      text-decoration: none;
-      overflow: hidden;
-    }
-
-    .thumbnail-img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* YouTube風再生ボタン overlay */
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 48px;
-      height: 34px;
-      background-color: rgba(255, 0, 0, 0.9);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.2s;
-    }
-
-    .thumbnail-link:hover .play-button {
-      background-color: #ff0000;
-    }
-
-    .play-button::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 7px 0 7px 12px;
-      border-color: transparent transparent transparent #ffffff;
-      margin-left: 2px;
-    }
-
-    /* ハンドメイド */
-    .handmade-grid {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .handmade-item {
-      flex: 1;
-    }
-
-    .handmade-item-img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* レスポンシブ対応 (スマホ表示時) */
-    @media (max-width: 600px) {
-      .header-section, .skill-container, .yosakoi-intro, .video-grid, .handmade-grid {
-        flex-direction: column;
-        align-items: center;
-      }
-      .skill-right {
-        width: 100%;
-      }
-      .video-item {
-        max-width: 100%;
-      }
-    }
-  </style>
+        /* レスポンシブ（スマホ対応） */
+        @media (max-width: 768px) {
+            .profile-grid, .skills-grid, .work-detail, .yosakoi-grid, .yosakoi-videos, .handmade-item {
+                grid-template-columns: 1fr;
+            }
+            .profile-img-wrapper {
+                order: -1;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- ヘッダー / プロフィール -->
-    <header class="header-section">
-      <div>
-        <div class="header-title">YOKOYAMA NAMI</div>
-        <ul class="motto-list">
-          <li>常に学ぶ姿勢</li>
-          <li>コツコツと</li>
-          <li>楽しみを見つける</li>
-          <li>計画的に</li>
-          <li>流れ(導線)を意識する</li>
-          <li>インプットとアウトプット</li>
-        </ul>
-      </div>
-      <div class="profile-images">
-        <!-- 画像① -->
-        <img src="image1.jpg" alt="横山奈美 プロフィール写真" class="profile-img-1">
-        <!-- 画像② -->
-        <img src="image2.jpg" alt="アレンジ人材 エキスパート" class="profile-img-2">
-      </div>
+    <!-- プロフィールヘッダー -->
+    <header class="profile-header">
+        <h1>YOKOYAMA NAMI</h1>
     </header>
 
-    <!-- スキル セクション -->
-    <section class="bg-box">
-      <div class="section-title">スキル</div>
-      <div class="skill-container">
-        <div class="skill-left">
-          <p><strong>レクチャー</strong></p>
-          <p>
-            自身が学ぶ際「人に教えるには」「マニュアル化するなら」を意識し理解を深め再現性を高めます。<br>
-            言葉選びには時間をかけるタイプですが、相手の理解度や前提知識に合わせた丁寧でわかりやすい解説ができます。
-          </p>
+    <section class="card">
+        <div class="profile-grid">
+            <div>
+                <p>常に再現性と理解度を高めることを意識し、最新のITツールやAI技術を日常的に取り入れながら学習中。ものづくりで培った導線意識とコツコツ積み上げる力を活かし、確実なスキルアップと貢献を目指します！</p>
+            </div>
+            <div class="profile-img-wrapper">
+                <!-- 画像① -->
+                <img src="images/Image1.jpg" alt="横山奈美 プロフィール写真" class="profile-img">
+            </div>
+            <div>
+                <ul class="profile-list">
+                    <li>常に学ぶ姿勢</li>
+                    <li>コツコツと計画的に</li>
+                    <li>楽しみを見つける</li>
+                    <li>流れ（導線）を意識する</li>
+                    <li>インプットとアウトプット</li>
+                </ul>
+            </div>
         </div>
-        <div class="skill-right">
-          <ul class="skill-list">
-            <li>Slack</li>
-            <li>Zoom/Google Meet</li>
-            <li>エクセル</li>
-            <li>スプレッドシート</li>
-            <li>ジェミニ</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
-    <!-- 作成 セクション -->
-    <div class="section-main-title">作成</div>
-
-    <!-- YOSAKOIソーラン -->
-    <section class="bg-box">
-      <div class="sub-section-title">YOSAKOIソーラン</div>
-      
-      <div class="yosakoi-intro">
-        <!-- 画像③ -->
-        <div class="yosakoi-img-box">
-          <img src="image3.jpg" alt="YOSAKOI衣装・装飾" class="yosakoi-img">
+    <!-- スキル -->
+    <h2>スキル</h2>
+    <section class="skills-grid card">
+        <div class="skill-card">
+            <!-- 画像② -->
+            <img src="images/Image2.png" alt="Slack" class="skill-icon">
+            <div class="skill-info">
+                <h3>Slack</h3>
+                <p>ワークフロー設定<br>結論→詳細で相違のないコミュニケーション</p>
+            </div>
         </div>
-        <div class="yosakoi-text">
-          <p>
-            2018年～夢幻～をテーマに<br>
-            全体的に胡蝶をイメージ<br>
-            梅と椿の儚げな冬の花で統一
-          </p>
-          <p>
-            2017年～海流～をテーマに<br>
-            腰巻の裏地は青、袴を銀にして<br>
-            荒々しい水飛沫を表現
-          </p>
-        </div>
-      </div>
-
-      <!-- サムネイル動画リンク -->
-      <div class="video-grid">
-        <!-- サムネ④ -->
-        <div class="video-item">
-          <div class="video-label">▽金沢ゆめ街道</div>
-          <a href="https://www.youtube.com/watch?v=L-ebFRETfLk&t=40s" target="_blank" rel="noopener noreferrer" class="thumbnail-link">
+        <div class="skill-card">
             <!-- 画像④ -->
-            <img src="image4.jpg" alt="金沢ゆめ街道 動画サムネイル" class="thumbnail-img">
-            <div class="play-button"></div>
-          </a>
+            <img src="images/Image3.png" alt="Excel/スプレッドシート" class="skill-icon">
+            <div class="skill-info">
+                <h3>エクセル / スプレッドシート</h3>
+                <p>エクセル基礎取得<br>スプレッドシート 簡単なスクリプトで業務改善に貢献</p>
+            </div>
         </div>
-
-        <!-- サムネ⑤ -->
-        <div class="video-item">
-          <div class="video-label">▽北海道大会</div>
-          <a href="https://www.youtube.com/watch?v=CCfuBsEpsDI" target="_blank" rel="noopener noreferrer" class="thumbnail-link">
+        <div class="skill-card">
+            <!-- 画像③ -->
+            <img src="images/Image4.png" alt="Zoom / Google Meet" class="skill-icon">
+            <div class="skill-info">
+                <h3>ズーム / Google Meet</h3>
+                <p>基本操作およびオンラインレクチャー・進行</p>
+            </div>
+        </div>
+        <div class="skill-card">
             <!-- 画像⑤ -->
-            <img src="image5.jpg" alt="北海道大会 動画サムネイル" class="thumbnail-img">
-            <div class="play-button"></div>
-          </a>
+            <img src="images/Image5.png" alt="Gemini" class="skill-icon">
+            <div class="skill-info">
+                <h3>Gemini（AI）</h3>
+                <p>業務効率化のためのプロンプト作成、学習サポートとしての活用</p>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- ハンドメイド -->
-    <section class="bg-box">
-      <div class="sub-section-title">ハンドメイド</div>
-      <div class="handmade-grid">
+    <!-- 電子書籍サイト更新 -->
+    <h2>電子書籍サイト更新</h2>
+    <section class="card">
         <!-- 画像⑥ -->
-        <div class="handmade-item">
-          <div class="video-label">▽アクセサリー作り/セルフネイル</div>
-          <img src="image6.jpg" alt="アクセサリー作りとセルフネイル作品" class="handmade-item-img">
+        <img src="images/Image6.png" alt="バナー実績" class="banner-img">
+        
+        <div class="work-detail">
+            <div>
+                <!-- 画像⑦ -->
+                <img src="images/Image7.png" alt="スラムダンク掲載時サイトイメージ" class="site-img">
+                <p style="font-size: 12px; color: #666; text-align: center; margin-top: 5px;">電子書籍化不可能と言われていた「スラムダンク」掲載時</p>
+            </div>
+            <div class="text-block">
+                <h4>課題</h4>
+                <ul>
+                    <li>・出版社等から多数納品される作品素材において、掲載ルール（レギュレーション）の管理がある</li>
+                    <li>・掲載配置によってユーザーのアクセス数や購買点数が変動するため、単なる作業としての更新にとどまらず、売上とユーザー利便性を両立させる配置設計が必要</li>
+                </ul>
+                <h4>結果</h4>
+                <ul>
+                    <li>・掲載ルールの徹底により、運用上のトラブルや規約違反ゼロを継続</li>
+                    <li>・購買動向を意識した配置替えにより、ユーザーの回遊性とアクセス率を向上させ、コンテンツの購買点数アップ・売上最大化に貢献</li>
+                </ul>
+            </div>
         </div>
-        <!-- 画像⑦ -->
-        <div class="handmade-item">
-          <div class="video-label">▽リメイク</div>
-          <img src="image7.jpg" alt="リメイク作品" class="handmade-item-img">
-        </div>
-      </div>
     </section>
 
-  </div>
+    <!-- ギャラリー -->
+    <h2>ギャラリー</h2>
+    
+    <!-- YOSAKOI -->
+    <section class="card">
+        <h3 style="text-align: center; margin-bottom: 20px;">YOSAKOIソーラン</h3>
+        <div class="yosakoi-grid">
+            <div class="yosakoi-img-group">
+                <!-- 画像⑧ -->
+                <img src="images/Image8.jpg" alt="YOSAKOI衣装" class="yosakoi-img">
+            </div>
+            <div class="text-block">
+                <p><strong>テーマ（コンセプト）：2018年〜夢幻〜</strong><br>全体的に胡蝶をイメージ。梅と椿の夢げな冬の花で統一</p>
+                <br>
+                <p><strong>テーマ（コンセプト）：2017年〜海流〜</strong><br>腰巻の裏地は青、袴を銀にして舞うたびに荒々しい水飛沫を表現</p>
+            </div>
+        </div>
+
+        <div class="yosakoi-videos">
+            <div>
+                <p style="font-size: 14px; margin-bottom: 5px;">▽ 金沢ゆめ街道</p>
+                <!-- 画像⑨ + YouTubeリンク -->
+                <a href="https://www.youtube.com/watch?v=L-ebFREFtk&t=40s" target="_blank" rel="noopener">
+                    <img src="images/Image4.jpg" alt="金沢ゆめ街道 動画サムネイル" class="video-thumb">
+                </a>
+            </div>
+            <div>
+                <p style="font-size: 14px; margin-bottom: 5px;">▽ 北海道大会</p>
+                <!-- 画像⑩ + YouTubeリンク -->
+                <a href="https://youtu.be/CCfuBsEpsDI?si=vwxFdexHMGIIrFOU" target="_blank" rel="noopener">
+                    <img src="images/Image5.jpg" alt="北海道大会 動画サムネイル" class="video-thumb">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ハンドメイド & DIY -->
+    <section class="card">
+        <h3 style="text-align: center; margin-bottom: 20px;">ハンドメイド & DIY</h3>
+        
+        <!-- アクセサリー -->
+        <div class="handmade-item">
+            <div>
+                <!-- 画像⑪ -->
+                <img src="images/Image11.png" alt="アクセサリー" class="handmade-img">
+            </div>
+            <div class="text-block">
+                <h4>▽ アクセサリー作り</h4>
+                <p><strong>背景（課題）：</strong>コロナ禍の頻繁な手洗いや消毒によるサビ・劣化対策</p>
+                <p><strong>アプローチ：</strong>耐水性の高いワイヤー素材選択</p>
+                <p><strong>結果：</strong>1年間使用でも変色・錆ゼロの実現</p>
+            </div>
+        </div>
+
+        <!-- ネイル -->
+        <div class="handmade-item">
+            <div class="handmade-img-group">
+                <!-- 画像⑫ -->
+                <img src="images/Image12.png" alt="セルフネイル" class="handmade-img">
+            </div>
+            <div class="text-block">
+                <h4>▽ セルフネイル</h4>
+                <p><strong>背景（課題）：</strong>基本的な塗りから複雑なデザイン表現へのステップアップ</p>
+                <p><strong>アプローチ：</strong>単色グラデーション ➔ 複雑な動物柄</p>
+                <p><strong>結果：</strong>ブラシコントロールの向上とデザイン幅の拡大、満足度向上</p>
+            </div>
+        </div>
+
+        <!-- DIY (リメイク) -->
+        <div class="handmade-item">
+            <div>
+                <!-- 画像⑬ -->
+                <img src="images/Image13.png" alt="DIY リメイク" class="diy-img">
+            </div>
+            <div class="text-block">
+                <h4>▽ DIY（リメイク）</h4>
+                <p><strong>背景（課題）：</strong>使わなくなった衣類や古くなった家具の廃棄による環境負荷（衣類ロス）への問題意識（SDGs）</p>
+                <p><strong>アプローチ：</strong>不要となった洋服を素材として再利用。それぞれの生地の特性（耐久性・肌触り）を活かし、ソファカバーやクッション、バッグへとデザイン・再構築</p>
+                <p><strong>结果：</strong>ゴミを削減しつつ、お気に入りの素材を新しい価値あるインテリアや雑貨として再誕生させた。環境への配慮と、空間・生活の満足度向上を両立</p>
+            </div>
+        </div>
+    </section>
+
+</div>
 
 </body>
 </html>
